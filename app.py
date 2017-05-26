@@ -5,10 +5,12 @@ from flask import Flask, render_template, request, session, flash, redirect, url
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
 
+from flask.ext.heroku import Heroku
+
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
-#postgresql://scott:tiger@localhost/mydatabase
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
+heroku = Heroku(app)
 db = SQLAlchemy(app)
 
 class Posts(db.Model):
