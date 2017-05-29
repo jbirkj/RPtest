@@ -31,7 +31,7 @@ class Posts(db.Model):
 # configuration
 USERNAME = 'a'
 PASSWORD = 'a'
-SECRET_KEY = ''
+SECRET_KEY = 'abcdefg'
 
 # pulls in configurations by looking for UPPERCASE variables
 app.config.from_object(__name__)
