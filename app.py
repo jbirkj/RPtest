@@ -10,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 #heroku = Heroku(app)
 db = SQLAlchemy(app)
 
