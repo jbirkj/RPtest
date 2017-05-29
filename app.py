@@ -1,6 +1,7 @@
 # Blog.py - controller
 
 # imports
+import os
 from flask import Flask, render_template, request, session, flash, redirect, url_for, g
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
