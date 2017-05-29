@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, session, flash, redirect, url
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
 
-from flask.ext.heroku import Heroku
+from flask.heroku import Heroku
 
 app = Flask(__name__)
 
