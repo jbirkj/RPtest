@@ -10,8 +10,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 #heroku = Heroku(app)
 db = SQLAlchemy(app)
 
@@ -29,6 +29,19 @@ class Posts(db.Model):
     def __repr__(self):
         return '<title %r, post %r >' % (self.title, self.post)
 
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120), unique=True)
+
+    def __init__(self, username, password, email):
+        self.username = username
+        self.password = password
+        self.email = email
+
+    def __repr__(self):
+        return '<User %r>' % self.username
 
 # configuration
 USERNAME = 'a'
@@ -53,8 +66,12 @@ def login():
     error = None
     status_code = 200
     if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME'] or request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid Credentials. Please try again.'
+        userWebform = request.form['username']
+        userObj = Users.query.filter_by(username=userWebform).first()
+        
+        if userObj == None or request.form['username'] != userObj.username or request.form['password'] != userObj.password:
+        #if request.form['username'] != app.config['USERNAME'] or request.form['password'] != app.config['PASSWORD']:
+            error = 'Unknown username or invalid Credentials. Please try again.'
             status_code = 401
         else:
             session['logged_in'] = True
