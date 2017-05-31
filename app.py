@@ -10,8 +10,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/localdb3'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 #heroku = Heroku(app)
 db = SQLAlchemy(app)
 
@@ -44,8 +44,8 @@ class Users(db.Model):
         return '<User %r>' % self.username
 
 # configuration
-USERNAME = 'a'
-PASSWORD = 'a'
+#USERNAME = 'a'
+#PASSWORD = 'a'
 SECRET_KEY = 'abcdefg'
 
 # pulls in configurations by looking for UPPERCASE variables
