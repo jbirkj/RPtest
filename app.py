@@ -118,7 +118,6 @@ def sms_reply():
         resp.message("WHy didn't you say Hi ?")
 '''
     resp.message("WHy didn't you say Hi ?")
-
     return str(resp)
 
 
