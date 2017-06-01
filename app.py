@@ -5,7 +5,7 @@ import os
 from flask import Flask, render_template, request, session, flash, redirect, url_for, g, Response
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
-from twilio import twiml
+from twilio.twiml.messaging_response import MessagingResponse
 
 #from flask.ext.heroku import Heroku
 
@@ -108,7 +108,7 @@ def add():
 
 @app.route('/sms', methods=['GET', 'POST'])
 def sms_reply():
-    resp = twilio.twiml.Response()
+    resp = MessagingResponse()
 
 #    body = request.values.get('Body', None)
 #
