@@ -106,15 +106,19 @@ def add():
         flash('New entry was successfully posted!')
         return redirect(url_for('main'))
 
-@app.route("/sms", methods=[POST])
+@app.route("/sms", methods=['POST'])
 def sms_reply():
-    body = request.values.get('Body', None)
     resp = twiml.Response()
+'''
+    body = request.values.get('Body', None)
+
     if body == "Hi":
         resp.message("SMS from Beerkster !!")
     else:
         resp.message("WHy didn't you say Hi ?")
-        
+'''
+    resp.message("WHy didn't you say Hi ?")
+
     return str(resp)
 
 
