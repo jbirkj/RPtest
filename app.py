@@ -109,14 +109,14 @@ def add():
 @app.route('/sms', methods=['GET', 'POST'])
 def sms_reply():
     resp = twiml.Response()
-'''
-    body = request.values.get('Body', None)
-
-    if body == "Hi":
-        resp.message("SMS from Beerkster !!")
-    else:
-        resp.message("WHy didn't you say Hi ?")
-'''
+    
+#    body = request.values.get('Body', None)
+#
+#    if body == "Hi":
+#        resp.message("SMS from Beerkster !!")
+#    else:
+#        resp.message("WHy didn't you say Hi ?")
+#
     resp.message("WHy didn't you say Hi ?")
     return str(resp)
 
