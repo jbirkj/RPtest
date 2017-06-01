@@ -2,9 +2,10 @@
 
 # imports
 import os
-from flask import Flask, render_template, request, session, flash, redirect, url_for, g
+from flask import Flask, render_template, request, session, flash, redirect, url_for, g, Response
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
+from twilio import twiml
 
 #from flask.ext.heroku import Heroku
 
@@ -104,6 +105,18 @@ def add():
         db.session.commit()
         flash('New entry was successfully posted!')
         return redirect(url_for('main'))
+
+@app.route("/sms", methods=[POST])
+@login_required
+def sms_reply():
+    body = request.values.get('Body', None)
+    resp = twiml.Response()
+    if body == "Hi":
+        resp.message("SMS from Beerkster !!")
+    else:
+        resp.message("WHy didn't you say Hi ?")
+        
+    return str(resp)
 
 
 if __name__ == '__main__':
