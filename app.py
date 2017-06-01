@@ -107,7 +107,6 @@ def add():
         return redirect(url_for('main'))
 
 @app.route("/sms", methods=[POST])
-@login_required
 def sms_reply():
     body = request.values.get('Body', None)
     resp = twiml.Response()
