@@ -108,8 +108,8 @@ def add():
 
 @app.route('/sms', methods=['GET', 'POST'])
 def sms_reply():
-    resp = twiml.Response()
-    
+    resp = twilio.twiml.Response()
+
 #    body = request.values.get('Body', None)
 #
 #    if body == "Hi":
