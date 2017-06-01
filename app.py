@@ -106,7 +106,7 @@ def add():
         flash('New entry was successfully posted!')
         return redirect(url_for('main'))
 
-@app.route('/sms', methods=['POST'])
+@app.route('/sms', methods=['GET', 'POST'])
 def sms_reply():
     resp = twiml.Response()
 '''
